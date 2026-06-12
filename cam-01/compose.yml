@@ -1,0 +1,13 @@
+services:
+  cam-proxy:
+    image: nginx:1.27-alpine
+    container_name: cam-proxy
+    restart: unless-stopped
+    ports:
+      - "1984:1984"
+    environment:
+      DOMAIN: coleus.app
+      CAM01_IP: 192.168.1.160
+      CAM02_IP: 192.168.8.144
+    volumes:
+      - ./cam-proxy.conf.template:/etc/nginx/templates/cam-proxy.conf.template:ro
