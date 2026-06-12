@@ -1,0 +1,20 @@
+services:
+  cam01:
+    image: one-proxy
+    container_name: proxy-cam01
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:1984:1984"
+    environment:
+      LISTEN_PORT: "1984"
+      TARGET: 192.168.1.160:80
+
+  cam02:
+    image: one-proxy
+    container_name: proxy-cam02
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:1985:1985"
+    environment:
+      LISTEN_PORT: "1985"
+      TARGET: 192.168.1.144:80
